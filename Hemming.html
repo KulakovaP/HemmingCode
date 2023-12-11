@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title> My Hemming Code </title>
+    <script>
+        function code() {
+            let inpText = document.getElementById('inpMessage').value;
+            inpText = inpText.split('');
+            for (let i = 0; i < inpText.length; i++) {
+                inpText[i] = parseInt(inpText[i]);
+            }
+            let controlBit1 = (inpText[0] + inpText[1] + inpText[3]) % 2;
+            let controlBit2 = (inpText[0] + inpText[2] + inpText[3]) % 2;
+            let controlBit3 = (inpText[1] + inpText[2] + inpText[3]) % 2;
+            document.getElementById('outputMessage').value = inpText.join('') + controlBit2 + controlBit1 + controlBit3;
+            
+        }
+
+
+        function code2(){
+            let inpText2 = document.getElementById('outputMessage').value;
+            inpText2 = inpText2.split('');
+            for(let i = 0; i < inpText2.length; i ++){
+                inpText2[i] = parseInt(inpText2[i]);
+            }
+           
+
+            let circle1 = (inpText2[0] + inpText2[2] + inpText2[3] + inpText2[4]) % 2;
+            let circle2 = (inpText2[0] + inpText2[1] + inpText2[3] + inpText2[5]) % 2;
+            let circle3 = (inpText2[1] + inpText2[2] + inpText2[3] + inpText2[6]) % 2;
+            if ((circle1 + circle2 + circle3) == 0) {
+                document.getElementById('MyPlaceHolder').innerText = 'no errors'
+            }
+
+            if (circle1 + circle2 + circle3 == 3) {
+                if (inpText2[3] == 1) {
+                    inpText2[3] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                }
+                else {
+                    inpText2[3] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                }
+            }
+            if (((circle1 + circle2) == 2) && (circle3 == 0)) {
+                if (inpText2[0] == 1) {
+                    inpText2[0] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[0] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+            }
+            if (((circle2 + circle3) == 2) && (circle1 == 0)) {
+                if (inpText2[1] == 1) {
+                    inpText2[1] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[1] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+            }
+            if (((circle1 + circle3) == 2) && (circle2 == 0)) {
+                if (inpText2[2] == 1) {
+                    inpText2[2] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[2] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+            }
+            if (((circle2 + circle3) == 0) && (circle1 == 1)) {
+                if (inpText2[4] == 1) {
+                    inpText2[4] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[4] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+            }
+            if (((circle1 + circle3) == 0) && (circle2 == 1)) {
+                if (inpText2[5] == 1) {
+                    inpText2[5] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[5] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+            }
+            if (((circle1 + circle2) == 0) && (circle3 == 1)) {
+                if (inpText2[6] == 1) {
+                    inpText2[6] = 0;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                    
+                }
+                else {
+                    inpText2[6] = 1;
+                    document.getElementById('MyPlaceHolder').innerText = 'one errors'
+                }
+            }
+
+            document.getElementById('verMessag').value = inpText2.join('');
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>Kulakova, Hemming Code</h1>
+    <p><input type="text" id="inpMessage" /> input message, 4 bits </p>
+    <p><input type="button" value="Code" onclick="code()" /></p>
+    <p><input type="text" id="outputMessage" > coded message </p>
+    <p><input type="button" value="Check" onclick="code2()" /></p>
+    <p><input type="text" id="verMessag" /> original message </p>
+    <p id='MyPlaceHolder'></p>
+</body>
+</html>
